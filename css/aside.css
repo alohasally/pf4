@@ -1,0 +1,95 @@
+aside{
+  position: fixed;
+  right: 40px;
+  bottom: 60px;
+  z-index: 10;
+}
+aside a.mode{
+  border: 1px solid;
+  overflow: hidden;
+  display: block;
+  height: 25px;
+  cursor: pointer;
+  transition: all 0.4s;
+  padding: 1px 5px 5px 15px;
+  line-height: 1.5;
+  border-radius: 15px;
+  background-color: rgba(0,0,0,0.2);
+}
+aside a.mode::before{
+  content: "Light Dark";
+  width: 39px;
+  display: inline-block;
+  margin-right: 10px;
+  line-height: 1.5;
+  transform: translateY(-50%);
+  vertical-align: text-top;
+  transition: all 0.4s;
+}
+aside .mode.dark{
+   color: white !important;
+   background-color: rgba(255,255,255,0.4);
+   padding: 2px 5px 2px 15px;
+   line-height: 1.3;
+   border-radius: 15px;
+}
+aside .mode.dark::before{
+  color: white;
+  transform: translateY(0%) !important;
+}
+aside a.mode::after{
+  content: "";
+  display:inline-block;
+  width:40px;
+  background-image:url(../img/ico_moon.png);
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+}
+aside .mode.dark::after{
+ background-image:url(../img/ico_sun.png); 
+}
+.bodyDark{
+  color: #fff !important;
+  background-color: #000 !important;
+}
+
+.bodyDark header .wrap::after{
+  color: #fff !important;
+  background-color: #000 !important;
+}
+
+.bodyDark header .wrap a.allmenu::before,
+.bodyDark header .wrap a.allmenu span,
+.bodyDark header .wrap a.allmenu::after{
+filter: brightness(200%);   
+}
+
+
+.bodyDark header .wrap ul.gnb{
+  background-color: #000 !important;  
+}
+.bodyDark footer .wrap{
+  background-color: #000 !important;
+}
+
+.bodyDark footer address{
+   color: #fff !important;
+}
+.bodyDark footer{
+  background-color: #000 !important;
+}
+
+.bodyDark footer img{
+filter: invert(100%); 
+}
+
+.bodyDark header a{
+filter: invert(100%); 
+}
+
+.bodyDark aside a.mode{
+}
+

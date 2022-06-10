@@ -1,0 +1,66 @@
+footer {
+  background-color: #fff;
+  color: #888;
+}
+footer a{
+   color: #666;
+}
+footer .wrap {
+ 
+  display: flex;
+  padding-bottom: 100px;
+  transition: all 0.7s;
+}
+
+footer address {
+
+  width: 30%;
+  margin-left: 200px;
+  font-size: 13px;
+}
+
+footer .engAdress {
+
+  line-height: 1.4;
+  padding-top: 30px;
+  display: block;
+}
+
+footer ul.fnb {
+ 
+
+  font-size: 13px;
+  line-height: 1.5;
+  padding-left: 20px;
+  font-weight: 500;
+}
+
+
+footer .together{
+  
+  width: 100%;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 3;
+  background-image: url(https://brandxcorp.com/web/upload/images/img_footer_bottom.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: all 0.7s;
+  position: relative;
+}
+
+footer .together h2{
+  
+  color: #fff;
+  /*! position: fixed; */
+  z-index: 999;
+}
+
+footer .together p{
+  
+}

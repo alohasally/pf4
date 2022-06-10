@@ -1,0 +1,448 @@
+main{
+}
+section{
+}
+
+section>.wrap{
+}
+/* 1 introduction-------------------------------------------------------------------1 */
+/* main section:not(:nth-child(1)){
+  display: none;
+} */
+#introduction{
+  padding-top: 240px;
+  transition: all 0.5s;
+  position: relative;
+}
+.bgeee{
+  background-color: red;
+}
+#introduction .wrap{
+  display: flex;
+  justify-content: space-between;
+  /*! padding-left: 3%; */
+  /*! box-sizing: border-box; */
+  max-width: 100%;
+}
+#introduction .wrap::before{
+content:"";
+display: block;
+width: 45%;
+height: 2100px;
+margin-left: 40px;
+background-image: url(https://www.brandxcorp.com/web/upload/images/img_main01.jpg),
+  url(https://www.brandxcorp.com/web/upload/images/img_main02.jpg),
+  url(https://www.brandxcorp.com/web/upload/images/img_main03.jpg),
+  url(https://www.brandxcorp.com/web/upload/images/img_main04.jpg),
+  url(https://www.brandxcorp.com/web/upload/images/img_main05.jpg);
+background-size: 100%,66%,75%,77%,100%;
+background-position-x: left,right,left,right,left;
+background-repeat: no-repeat;
+background-position-y: 0,338px,850px,1045px,1400px;
+}
+#introduction .right{
+  width: 440px;
+  box-sizing: border-box;
+  padding-right: 55px;
+}
+#introduction hgroup{
+
+}
+#introduction h2{
+
+}
+#introduction h3{
+  margin: 30px 0;
+  line-height: 1.6;
+}
+#introduction .right p{
+  line-height: 2;
+}
+.fixed{
+  position: fixed;
+  top: 50px !important;
+  right: 0;
+}
+.introPt{
+  position: absolute;
+  right: 0;
+}
+#introduction .right a.more{
+  position: absolute;
+  bottom: -20px;
+  
+  font-size: 12px;
+  color: red;
+}
+#introduction .right a.more::before{
+ content: "";
+ display: block;
+ border: transparent ;
+ border-right:1px solid red;
+ width: 20px;
+ height: 20px;
+ position: absolute;
+ right: -30%;
+ bottom: 0;  
+ transform-origin: 100% 100%;
+ transform: rotate(-45deg);
+ transition: all 0.5s;
+}
+#introduction .right a.more::after{
+  content: "";
+  width: 130%;
+  display: block;
+  border-bottom:1px solid red; 
+  margin-top:10px;
+  transition: all 0.5s;
+}
+#introduction .right a.more:hover::before{
+   right: -40%;
+}
+#introduction .right a.more:hover::after{
+    width: 140%;
+}
+#introduction .right::after{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 200px;
+  margin-top: 20px;
+  background-image: url(https://www.brandxcorp.com/web/upload/images/img_circle01.png),url(https://www.brandxcorp.com/web/upload/images/img_circle02.png),url(https://www.brandxcorp.com/web/upload/images/img_circle03.png);
+  background-size: 35%,35%,35%;
+  background-position-x: 0,44%,88%;
+  background-repeat: no-repeat;
+  background-position-y: center;
+}
+/* news -------------------------------------------------*/
+#news{
+
+  height: 100%;
+}
+#news .wrap{
+
+  display: flex;
+  gap: 40px;
+}
+#news h2{
+
+  font-size: 0;
+}
+#news article{
+  
+  width: calc(100% / 3);
+}
+#news hgroup {
+
+  position: relative;
+}
+#news hgroup::before{
+  content:"";
+  display: block;
+  height: 320px;
+  /*! background-image: url(../img/); */
+  background-color: #eee;
+}
+#news hgroup h3 {
+  left: 0;
+  right: 0;
+}
+#news hgroup h3::before{
+  content:"";
+  display: block;
+  transform: scale(0.7) translateX(-22px) translateY(-17px) rotate(90deg);
+  transform-origin: 0 100%;
+  color: orange;
+  position: absolute;
+  left: 0;
+  top: 0px;
+}
+#news article:nth-of-type(1) hgroup h3::before{
+  content:"Brand X, News";
+  
+}
+#news article:nth-of-type(2) hgroup h3::before{
+  content:"Brand X, IR";
+  
+}
+#news article:nth-of-type(3) hgroup h3::before{
+  content:"Brand X, Career";
+  
+}
+#news hgroup h3 a{
+  
+  font-size: 0;
+}
+#news h4 {
+ 
+  font-size: 26px;
+  margin-top: 20px;
+  line-height: 1.2;
+  height: 100px;
+}
+#news p {
+
+  line-height: 1.6;
+  margin-top: 20px;
+  height: 150px;
+  text-align: justify;
+}
+#news a {
+
+}
+
+
+
+#news a.more{
+ 
+  font-size: 14px;
+  border: 1px solid #999;
+  padding: 15px;
+  border-radius: 30px;
+}
+
+
+.bodyDark #news a.more{
+  color: #fff;
+}
+
+/* 브랜드 */
+#brand{
+}
+
+#brand .wrap {
+  max-width: 100%;
+}
+
+#brand h2{
+
+}
+#brand ul{
+
+  display: flex;
+  flex-wrap: wrap;
+}
+#brand ul li{
+
+  width: calc(100% / 2);
+  height: 248px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+#brand ul li > a{
+
+  position: relative;
+}
+#brand ul li > a{
+  display: block;
+  height: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 14px;
+  padding-left: 20px;
+}
+#brand ul li:nth-child(1)  a{
+  background-image: url(../img/thumb_xexy.jpg);
+}
+#brand ul li:nth-child(2)  a{
+   background-image: url(../img/thumb_whia.jpg);
+}
+#brand ul li:nth-child(3)  a{
+   background-image: url(../img/thumb_gelato.jpg);
+}
+#brand ul li:nth-child(4)  a{
+   background-image: url(../img/thumb_mix.jpg);
+}
+#brand ul li:nth-child(5)  a{
+   background-image: url(../img/thumb_madi.jpg);
+}
+#brand ul li:nth-child(6)  a{
+   background-image: url(../img/thumb_pocket.jpg);
+}
+#brand ul li:nth-child(7) > a{
+   background-image: url(../img/thumb_3care.jpg);
+}
+#brand ul li:nth-child(8)  a{
+   background-image: url(../img/thumb_pt.jpg);
+}
+
+#brand ul li a h3{
+
+  width: 91px;
+  height: 20px;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}
+#brand ul li a h3 img{
+  
+  height: 70%;
+}
+#brand ul li a.over p{
+  line-height: 1.5;
+  font-size: 13px;
+  margin-top: 10px;
+  color: #000;
+  position: relative;
+  animation-name: up;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+ 
+}
+@keyframes up{
+  100%{
+    color:#000;
+    transform: translateY(-10px);
+    color:#fff;
+  }
+}
+
+#brand li a.over span{
+  display: block;
+  position: absolute;
+  left: 20px;
+  top:50px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  animation-name: upp;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+ 
+}
+
+@keyframes upp{
+  
+  100%{
+  top:40px;
+  }
+}
+
+#brand li:nth-child(1) a.over span{
+  background-image: url(../img/xexy_wh.png);
+  width: 130px;
+  height: 25px;
+}
+#brand li:nth-child(2) span{
+  background-image: url(../img/whiaLogo02.png);
+  width: 130px;
+  height: 25px;
+}
+#brand li:nth-child(3) span{
+  background-image: url(../img/gelato_ci_w.png);
+  width: 130px;
+  height: 25px;
+}
+#brand li:nth-child(4) span{
+  background-image: url(../img/mix2mix_white.png);
+  width: 130px;
+  height: 25px;
+}
+#brand li:nth-child(5) span{
+  background-image: url(../img/white-logo.png);
+  width: 130px;
+  height: 25px;
+}
+
+#brand li:nth-child(6) span{
+  background-image: url(../img/pocket_white.png);
+  width: 100px;
+  height: 30px;
+  background-size: 50%;
+  margin-bottom: 20px;
+}
+
+#brand li:nth-child(7) span{
+  background-image: url(../img/3care_white.png);
+  width: 130px;
+  height: 25px;
+}
+#brand li:nth-child(8) span{
+  background-image: url(../img/pt_white.png);
+  width: 130px;
+  height: 25px;
+}
+
+#brand ul li > a::before{
+  content:"";
+
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#brand ul li a:hover::before{
+    background-color:rgba(0,0,0,0.7);
+    
+}
+
+  
+#brand ul li a::after{
+/*   
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 4; */
+}
+  
+
+
+
+#brand ul li a a.detail{
+ 
+}
+#brand ul li p > a.more{
+  
+}
+
+
+
+
+#brandoffice{
+  display: flex;
+  justify-content: center;
+}
+ 
+#brandoffice .wrap{
+  
+  width: 1000px;
+  margin: initial;
+}
+
+#brandoffice h2{
+  
+  color: orangered;
+  text-transform: capitalize;
+  line-height: 3;
+}
+
+#brandoffice ul.brandOfficeSlide{
+  
+}
+
+#brandoffice ul.brandOfficeSlide li{
+  transform: translateX(-100px);
+  padding-right: 50px;
+  box-sizing: border-box;
+}
+
+#brandoffice ul.brandOfficeSlide li img{
+   
+}
+
+.progressive{
+  border-top:2px solid #eee;
+  display: block;
+  margin-top:40px;
+  width: calc(100% - 250px);
+  transition: all 0.7s;
+}
