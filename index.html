@@ -32,113 +32,217 @@
     <script>
         $(document).ready(
             function(){
-                //서브메뉴 표시(햄버거)
+                // 서브메뉴 표시(햄버거버튼)
                 $("header .wrap a.allmenu").click(function(){
                     // x변환
                     $(this).toggleClass("x");
-                    // 대메뉴 등장
+                    // 대메뉴등장
                     $("header .wrap ul.gnb").toggleClass("moveShow");
                     return false;
                 });
-                //타이틀 첫번째 목록 표시
+
+                //타이틀 첫번째 목록표시------------------------------------------
                 $("#title ul.slide li:eq(0)").addClass("currentSlide");
-                //타이틀리스트 제목클릭시 해당 li가 보이게
+                //타이틀리스트제목클릭시 해당li가 보이게 
                 $("#title ul.slide li").click(function(){
                     $(this).addClass("currentSlide");
                     $(this).siblings().removeClass("currentSlide");
-                    return false;
                 });
-                // 타이틀영역 위 대메뉴만 배치
-                $("#title .wrap").prepend("<div class='tMenu'></div>");
-                $("header ul.gnb").clone().appendTo(".tMenu");
-                $(".tMenu .sub").remove();
 
-                //a태그 상위로 이동
+
+                // 타이틀영역위 대메뉴 배치---------------------------------------
+               // $("#title .wrap").prepend("<ul class='tMenu'><li><a href=''>1</a></li><li><a href=''>2</a></li><li><a href=''>3</a></li><li><a href=''>4</a></li><li><a href=''>5</a></li></ul>");
+                $("#title .wrap").prepend("<div class='tMenu'></div>");
+                $("header .gnb").clone().appendTo(".tMenu");
+                $(".tMenu .sub").remove();
+                
+                // a태그 상위로 이동
                 var n=1;
                 $(".tMenu li").each(function(){
                     $(this).children().children().prependTo(".tMenu li:nth-child("+n+")");
-                    n++; // n의 값을 1씩 증가시켜라 증감연산자
+                    n++; //n의 값을 1씩 증가시켜라. 증감연산자
                 });
+                
+                //$(".tMenu li h2 a").prependTo(".tMenu  li");
                 $(".tMenu li h2").remove();
-                
-                // 대메뉴 갯수 정리 이동
+
+                // 대메뉴갯수 정리.contact 이동
                 $(".tMenu li:eq(4)").remove();
+                //$(".tMenu li:eq(5) a").appendTo(".tMenu");
                 $(".tMenu li:eq(5) a").insertAfter(".tMenu");
-                $(".tMenu + a").text("Contact Us.");
-            
-                
-                
-                // 소개부분 스크롤 이벤트 - 스크롤 > 고정 > 다시 스크롤 
-                //console.log( $("#introduction .right").offset());
-                var introductionTop=$("#introduction .right").offset().top;
-                var introductionRight = $("#introduction .right");
-                var introduction = $("#introduction").offset().top;
-                var introductionH = $("#introduction").innerHeight();
-                var news = $("#news").offset().top;
-                var winH = $(window).height();
+                $(".tMenu + a").text("Contact Us");
 
-                $(window).scroll(function(){
-                   //console.log($(window).scrollTop());
-                   //if($(window).scrollTop() > $("#introduction .right").offset().top - 50 ){
-                    //$("#introduction .right").addClass("fixed");
-                     windowTop=$(window).scrollTop();
-                     if( windowTop < introductionTop-50){
-                        $("#title .tMenu + a").removeClass("contactMove")
-                     }
+                var transY=0; 
+                var fTogether=$("footer .together").offset().top-$(window).height();
 
-                     //소개우측 고정
-                    if( windowTop > introductionTop){
-                        introductionRight.addClass("fixed");
-                    }
-                     //contact 크기, 색조정
-                    if( windowTop >= introductionTop){
-                        $("#title .tMenu + a").addClass("contactMove")
-                    }
-                    
-                    //소개위치시 배경색변경
-                   /* if(windowTop >= introductionTop){
-                        introduction.addClass("bg");
-                    } */
-                    //뉴스위치시 소개우측 위로고정 
-                    if( windowTop >= news - winH){
-                        // news.addClass("bg1");
-                      //  introduction.removeClass("bg");
-                        introductionRight.removeClass("fixed"); 
-                        introductionRight.addClass("introPt").css("top",introductionH - winH +50);    
-                    }
-                    
-                    if( windowTop < news - winH )
-                    introductionRight.removeClass("introPt");
-                    // 소개위치 위로 올라갔을 때 소개 우측 원래 위치 
-                    if( windowTop < introductionTop -50){
-                    introductionRight.removeClass("fixed");
-                    }
+               
+                // 소개부분 스크롤이벤트 - 스크롤 > 고정 > 다시 스크롤 -----------------------------------
+                //console.log($("#introduction .right").offset());
+                    var introduction=$("#introduction").offset().top;
+                    var introductionTop=$("#introduction .right").offset().top;
+                    var introductionH=$("#introduction").innerHeight();
+                    var introductionRight = $("#introduction .right");
+                    var news=$("#news").offset().top;
+                    var winH=$(window).height();
+                    var windowTop=$(window).scrollTop();
 
+                    // 함계해요 우리와.
+                    var transY=0; 
+                    var fTogether=$("footer .together").offset().top-$(window).height();
+                    console.log("ftogether111: "+fTogether);
+//스크롤이벤트 start -----------------------------------------------------------------------------------
+                    $(window).scroll(function(){
+                        
+                        windowTop=$(window).scrollTop();
+
+
+    //공지사항창 줄어지게--------------------------------....
+                        var st=$(window).scrollTop();
+                        if(st>300){
+                            st=0
+                        }else{
+                            st=(300-st) / 300;
+                        }
+                        $("#showimage").css({"transform":"scale("+st+")","opacity":st});
+
+    // 다크모드 감추기 --------------------------------------  
+                        var modeT=$(window).height()-$("aside a.mode").offset().top;
+
+                        if(windowTop>modeT && windowTop < fTogether){
+                            $("aside a.mode").stop().fadeTo(300,0.4);
+                            $("aside a.mode").css({"transform":"scale(0.3)","transform-origin":"100% 50%"});
+                            
+                            $("aside a.mode").on("mouseenter",
+                            function(){
+                                $("aside a.mode").stop().fadeTo(300,1);
+                                $("aside a.mode").css({"transform":"scale(1)","transform-origin":"100% 50%"});
+                            });
+                            $("aside a.mode").on("mouseleave",function(){
+                                $("aside a.mode").stop().fadeTo(300,0.4);
+                                $("aside a.mode").css({"transform":"scale(0.3)","transform-origin":"100% 50%"});
+                            });
+                        }  
+                         
+                        if( windowTop < modeT || windowTop > fTogether){
+                            $("aside a.mode").off("mouseenter mouseleave");
+                            $("aside a.mode").stop().fadeTo(300,1);
+                            $("aside a.mode").css({"transform":"scale(1)","transform-origin":"100% 50%"});
+                        }   
+                                
+
+
+    // contact크기,색조정원래로 && 로고이동
+                        if(windowTop<introduction){
+                            $("#title .tMenu + a").removeClass("contactMove");
+                            
+                        }
+                        if(windowTop>=introduction){
+                            $("#title .tMenu + a").addClass("contactMove");
+                        }
+
+    //1 1200크기이상일 경우에만 소개우측 스크롤고정.해제가 되게끔 처리
+                        if($(window).width()>1200){
+                            // 1소개우측 고정 ----------------------------------------------------------
+                            if( windowTop >= introductionTop-50 && windowTop<news-winH ){
+                                introductionRight.removeClass("introPt");
+                                introductionRight.addClass("fixed");
+                                // contact크기,색조정
+                                $("#title .tMenu + a").addClass("contactMove");
+                            }
+
+                            // 뉴스위치시 소개우측  위로 이동
+                            if(windowTop>=news-winH){
+                                introductionRight.removeClass("fixed");
+                                introductionRight.addClass("introPt").css("top",introductionH-winH+50);
+                            
+                            }
+                            // 소개위치이전시 소개우측 고정해제
+                            if(windowTop<introductionTop-50){
+                                introductionRight.removeClass("fixed");
+                            }
+
+                         // 1 소개우측 고정 ----------------------------------------------------------
+                        }
+
+      // 2함께해요 우리와 ------------------------------------------------------------------------------
+                        fTogether=$("footer .together").offset().top-$(window).height();
+                        console.log("ftogether: "+fTogether);
+
+                        //if($(window).scrollTop()>fTogether+$("footer .together").height()*0.66){
+                        if($(window).scrollTop()>fTogether){
+                            //  if(transY<=70){
+                            //     transY +=10;
+                            //  }
+                            // $("footer .together h2").stop().animate({"margin-top":-transY},1500);
+                            // console.log("transY:"+transY);
+
+                            /*
+                            $("footer .together h2").addClass("togetherHup");
+                            $("footer .together ").addClass("togetherBg");
+                            */
+                            scrollY = $(window).scrollTop() % fTogether;
+                            $("footer .together h2").css({"margin-top":-scrollY/2});
+                            $("footer .together").css({"background-size":"auto "+(100+scrollY/30)+"%"});
+                            
+
+                        }
+                        if($(window).scrollTop()<fTogether+$("footer .together").height()*0.66){
+    
+                            //  if(transY>=0){
+                            //     transY -=10;
+                            //  }
+                            // $("footer .together h2").stop().animate({"margin-top":-transY},1500);
+                            // console.log("transY:"+transY);
+
+                            /*
+                            $("footer .together h2").removeClass("togetherHup");
+                            $("footer .together ").removeClass("togetherBg");
+                            */
+                            // scrollY = $(window).scrollTop() % fTogether+$("footer .together").height()*0.66;
+                            // $("footer .together h2").stop().animate({"margin-top":scrollY},1500);
+                        }
+
+                    });
+//스크롤이벤트 end -----------------------------------------------------------------------------------
+                console.log("윈도우탑"+windowTop);
+
+                $(window).resize(function(){
+                    winH=$(window).height();
+                    //windowTop=$(window).scrollTop();
+                    introduction=$("#introduction").offset().top;
+                    introductionTop=$("#introduction .right").offset().top;
+                    introductionH=$("#introduction").innerHeight();
+                    console.log("윈도우탑"+windowTop);
                 });
-                  
-                //브랜드 오버효과
+
+ //3 브랜드 오버효과 -----------------------------------------------------------------
                 $("#brand ul li a").hover(
                     function(){
-                    $(this).children("p","p::before","span").removeClass("hide");
-                    $(this).addClass("over");
-                    $(this).children(".white").remove();
-                    $(this).children("h3").clone().prependTo(this).addClass("white");
-                },
+                        $(this).children("p").removeClass("hide");
+                        $(this).addClass("over");
+                        $(this).children(".white").remove();
+                        $(this).children("h3").clone().prependTo(this).addClass("white");
+                        $(this).children(".white").children("img").attr("src","img/mix2mix_white.png");
+                    },
                     function(){
-                    $(this).children("p","p::before","span").addClass("hide");
-                    $(this).removeClass("over");
-                    $(this).children(".white").remove();
+                        $(this).children("p").addClass("hide"); 
+                        $(this).removeClass("over"); 
+                        $(this).children(".white").remove(); 
+
                     }
                 );
-            });
 
+            }
+        );
     </script>
+    <script type="text/javascript" src="js/popup.js"></script>
+
     
     <link rel="stylesheet" type="text/css" href="css/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/> 
-    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
-    <!-- <script type="text/javascript" src="js/slick.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/> 
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>  -->
+   <script type="text/javascript" src="js/slick.js"></script>
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
 <!-- slick 브랜드 오피스  드래그시 진행바크기 변화  -->
     <script>
@@ -176,8 +280,8 @@
             
             
         //함께해요 우리와
-        var transY=160; 
-        var fTogether=$("footer .together").offset().top-$(window).height();
+        var transY = 181; 
+        var fTogether = $("footer .together").offset().top - $(window).height();
                 $(window).scroll(function(){
                     if($(window).scrollTop()>fTogether){
                         transY --;
@@ -418,7 +522,7 @@
                         Gelato factory is a special brand<br>
                         that provides you with new nails.
                     </p>
-                     <p class="detail ">자세히 보기</p>
+                     <p class="detail hide">자세히 보기</p>
                 </a>
             </li>
             <li>
