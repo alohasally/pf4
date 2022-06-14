@@ -140,8 +140,18 @@ background-position-y: 0,338px,850px,1045px,1400px;
   content:"";
   display: block;
   height: 320px;
-  /*! background-image: url(../img/); */
   background-color: #eee;
+  background-position: center;
+  background-size:cover 70%;
+}
+#news article:first-of-type hgroup::before{ 
+  background-image: url(../img/img_main07.jpg);
+}
+#news article:nth-of-type(2) hgroup::before{ 
+  background-image: url(../img/img_main06.jpg); 
+}
+#news article:last-of-type hgroup::before{ 
+  background-image: url(../img/img_main08.jpg); 
 }
 #news hgroup h3 {
   left: 0;
